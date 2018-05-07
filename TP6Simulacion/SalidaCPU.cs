@@ -9,9 +9,9 @@ namespace TP6Simulacion
     public class SalidaCPU : Evento, IComparable
     {
         public Int32 tiempoOcurrencia {get; set;}
-        
 
-        void Evento.ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
+
+        Evento ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
         {
             throw new NotImplementedException();
         }

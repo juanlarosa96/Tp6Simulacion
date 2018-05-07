@@ -24,10 +24,11 @@ namespace TP6Simulacion
             return tiempoOcurrencia - evento.tiempoOcurrencia;
         }
 
-        public void ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
+        public Evento ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
         {
             throw new NotImplementedException();
         }
+
 
     }
 }

@@ -37,6 +37,12 @@ namespace TP6Simulacion
             eventos.Add(new Llegada(generarTiempoProximaLlegada()));
         }
 
+        public void iniciarSimulacion(){
+        
+        }
+
+
+
         public Int32 generarTiempoProximaLlegada() {
             //Poner fdp
             return 5;

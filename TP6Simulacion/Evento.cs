@@ -8,7 +8,7 @@ namespace TP6Simulacion
 {
     public interface Evento
     {        
-        Evento ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO);
+        Evento ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO);
         int tiempoOcurrencia { get; set; }
     }
 }

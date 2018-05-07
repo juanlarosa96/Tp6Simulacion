@@ -11,9 +11,9 @@ namespace TP6Simulacion
         public Int32 tiempoOcurrencia {get; set;}
 
 
-        Evento ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
+        public Evento ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public int CompareTo(object obj)

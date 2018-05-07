@@ -33,13 +33,7 @@ namespace TP6Simulacion
         private void FormSimulacion_Load(object sender, EventArgs e)
         {
             List<Evento> lista = new List<Evento>();
-            lista.Add(new SalidaCPU());
-            lista.Add(new Llegada());
-            lista.Add(new SalidaIO());
-            lista[0].tiempoOcurrencia = 3;
-            lista[1].tiempoOcurrencia = 1;
-            lista[2].tiempoOcurrencia = 2;
-            lista.Sort();
+          
         }
     }
 }

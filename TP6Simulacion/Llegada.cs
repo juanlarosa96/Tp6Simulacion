@@ -15,7 +15,10 @@ namespace TP6Simulacion
             tiempoOcurrencia = tiempo;
         }
 
-        public Llegada();
+        public Llegada()
+        {
+            // TODO: Complete member initialization
+        }      
         
 
         public int CompareTo(object obj)
@@ -24,11 +27,16 @@ namespace TP6Simulacion
             return tiempoOcurrencia - evento.tiempoOcurrencia;
         }
 
-        public Evento ejecutar(List<Queue<Proceso>> colasCPU, Queue<Proceso> colaIO)
+        public Evento ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO)
         {
             throw new NotImplementedException();
         }
 
 
+
+        internal Int32 generarTiempoProximaLlegada()
+        {
+            return 5;
+        }
     }
 }

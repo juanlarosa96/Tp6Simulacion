@@ -24,12 +24,8 @@ namespace TP6Simulacion
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            List<Int64> lista = new List<long>();
-            Proceso p = new Proceso();
-            for (int i = 0; i < 20; i++)
-            {
-                lista.Add(p.generarRafagaCPU());
-            }
+            FormSimulacion simulacion = new FormSimulacion(Convert.ToInt64(numNucleos.Value));
+            simulacion.Show();
         }
     }
 }

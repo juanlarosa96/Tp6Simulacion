@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.btnIniciar = new System.Windows.Forms.Button();
-            this.txtNucleos = new System.Windows.Forms.TextBox();
+            this.numNucleos = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numNucleos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIniciar
@@ -42,31 +43,31 @@
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
-            // txtNucleos
+            // numNucleos
             // 
-            this.txtNucleos.Location = new System.Drawing.Point(170, 85);
-            this.txtNucleos.Name = "txtNucleos";
-            this.txtNucleos.Size = new System.Drawing.Size(100, 20);
-            this.txtNucleos.TabIndex = 1;
+            this.numNucleos.Location = new System.Drawing.Point(227, 106);
+            this.numNucleos.Name = "numNucleos";
+            this.numNucleos.Size = new System.Drawing.Size(120, 20);
+            this.numNucleos.TabIndex = 1;
             // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 422);
-            this.Controls.Add(this.txtNucleos);
+            this.Controls.Add(this.numNucleos);
             this.Controls.Add(this.btnIniciar);
             this.Name = "FormPrincipal";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numNucleos)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnIniciar;
-        private System.Windows.Forms.TextBox txtNucleos;
+        private System.Windows.Forms.NumericUpDown numNucleos;
     }
 }

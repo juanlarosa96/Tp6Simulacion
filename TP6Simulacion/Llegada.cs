@@ -9,6 +9,12 @@ namespace TP6Simulacion
     public class Llegada : Evento, IComparable
     {
         public Int32 tiempoOcurrencia { get; set; }
+
+        public Llegada(Int32 tiempo)
+        {
+            tiempoOcurrencia = tiempo;
+        }
+
         public int CompareTo(object obj)
         {
             Evento evento = obj as Evento;

@@ -14,7 +14,8 @@ namespace TP6Simulacion
     {
 
         Int64 cantidadNucleos;
-        List<Queue<Proceso>> colasCPU;
+        Simulacion simulacion;
+        private decimal p;
 
         public FormSimulacion()
         {
@@ -25,14 +26,20 @@ namespace TP6Simulacion
         {
             InitializeComponent();
             this.cantidadNucleos = cantidadNucleos;
+            this.simulacion = new Simulacion(new Random(), cantidadNucleos);
         }
+
 
         private void FormSimulacion_Load(object sender, EventArgs e)
         {
-            List<Queue<Proceso>> colasCPU = new List<Queue<Proceso>>();
-            for (int i = 0; i < cantidadNucleos; i++) {
-                colasCPU.Add(new Queue<Proceso>());
-            }
+            List<Evento> lista = new List<Evento>();
+            lista.Add(new SalidaCPU());
+            lista.Add(new Llegada());
+            lista.Add(new SalidaIO());
+            lista[0].tiempoOcurrencia = 3;
+            lista[1].tiempoOcurrencia = 1;
+            lista[2].tiempoOcurrencia = 2;
+            lista.Sort();
         }
     }
 }

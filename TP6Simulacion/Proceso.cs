@@ -6,7 +6,37 @@ using System.Threading.Tasks;
 
 namespace TP6Simulacion
 {
-    class Proceso
+    public class Proceso
     {
+        Double pCPU = 0.09656;
+
+        public Proceso()
+        {
+        }
+        public Int64 generarRafagaCPU()
+        {
+            Random r = new Random();
+            Boolean rechazo = true;
+            Double maxY = 0.08728;
+            Double maxX = 131;
+            Double x = r.NextDouble() * (maxX - 1) + 1;
+            Double y = r.NextDouble() * maxY;
+
+            while (rechazo)
+            {
+                if (Math.Pow((1 - pCPU), (x - 1)) * pCPU >= y)
+                {
+                    rechazo = false;
+                }
+                else
+                {
+                    x = r.NextDouble() * (maxX - 1) + 1;
+                    y = r.NextDouble() * maxY;
+                }
+            }
+
+            return Convert.ToInt64(x);
+        }
+
     }
 }

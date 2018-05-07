@@ -34,16 +34,17 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(298, 135);
+            this.btnIniciar.Location = new System.Drawing.Point(436, 69);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(102, 36);
             this.btnIniciar.TabIndex = 0;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // txtNucleos
             // 
-            this.txtNucleos.Location = new System.Drawing.Point(141, 135);
+            this.txtNucleos.Location = new System.Drawing.Point(170, 85);
             this.txtNucleos.Name = "txtNucleos";
             this.txtNucleos.Size = new System.Drawing.Size(100, 20);
             this.txtNucleos.TabIndex = 1;
@@ -57,6 +58,7 @@
             this.Controls.Add(this.btnIniciar);
             this.Name = "FormPrincipal";
             this.Text = "Inicio";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

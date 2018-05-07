@@ -15,6 +15,9 @@ namespace TP6Simulacion
             tiempoOcurrencia = tiempo;
         }
 
+        public Llegada();
+        
+
         public int CompareTo(object obj)
         {
             Evento evento = obj as Evento;

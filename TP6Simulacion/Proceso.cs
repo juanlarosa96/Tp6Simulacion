@@ -9,13 +9,14 @@ namespace TP6Simulacion
     public class Proceso
     {
         Double pCPU = 0.09656;
-
-        public Proceso()
+        Random r;
+        public Proceso(Random r)
         {
+            this.r = r;
         }
         public Int64 generarRafagaCPU()
         {
-            Random r = new Random();
+            
             Boolean rechazo = true;
             Double maxY = 0.08728;
             Double maxX = 131;

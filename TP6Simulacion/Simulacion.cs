@@ -10,8 +10,8 @@ namespace TP6Simulacion
     {
         Random r;
         private Random random;
-        private long cantidadNucleos;
-        private Queue<Proceso> colasCPU;
+        private Int32 cantidadNucleos;
+        private Queue<Proceso> colaCPU;
         private Queue<Proceso> colaIO;
         private List<Evento> eventos;
         private Int32 procesosFinalizados;
@@ -19,50 +19,56 @@ namespace TP6Simulacion
         private Int32 sumatoriasFinEsperaProceso;
         private Int32 sumatoriasInicioTiempoOciosoCPU;
         private Int32 sumatoriasFinTiempoOciosoCPU;
+        private Int32 finesRafagaTotales;
 
         public Int32 cantidadFinalProcesos { get; set; }
-        public Int64 tiempo { get; set; }
+        public Int32 tiempo { get; set; }
         public Simulacion(Random r)
         {
             this.r = r;
         }
 
-        public Simulacion(Random random, long cantidadNucleos)
+        public Simulacion(Random random, Int32 cantidadNucleos)
         {
             this.random = random;
             this.tiempo = 0;
             this.procesosFinalizados = 0;
-            List<Queue<Proceso>> colasCPU = new List<Queue<Proceso>>();
+            this.sumatoriasFinEsperaProceso = 0;
+            this.sumatoriasFinTiempoOciosoCPU = 0;
+            this.sumatoriasInicioEsperaProceso = 0;
+            this.sumatoriasInicioTiempoOciosoCPU = 0;
+            finesRafagaTotales = 0;
+            cantidadFinalProcesos = 10;
+            this.cantidadNucleos = cantidadNucleos;
 
-            for (int i = 0; i < cantidadNucleos; i++)
-            {
-                colasCPU.Add(new Queue<Proceso>());
-            }
-
+            Resultados.nucleos = cantidadNucleos;
+            colaCPU = new Queue<Proceso>();
             colaIO = new Queue<Proceso>();
             eventos = new List<Evento>();
 
         }
 
         public void iniciarSimulacion()
-        {
-            while (procesosFinalizados < cantidadFinalProcesos && eventos.Count != 0)
+        {            
+
+            while (procesosFinalizados < cantidadFinalProcesos)
             {
                 if (eventos.Count == 0)
                 {
-                    Llegada e = new Llegada();
-                    e.tiempoOcurrencia = e.generarTiempoProximaLlegada();
-                    eventos.Add(e);
+                    Llegada llegada = new Llegada(0, new Random());
+                    llegada.tiempoOcurrencia = llegada.generarTiempoProximaLlegada();
+                    eventos.Add(llegada);
                 }
                 else
                 {
                     eventos.Sort();
-                    Evento e = eventos[0];
-                    tiempo = e.tiempoOcurrencia;
-                    Evento eventoFuturo = e.ejecutar(colasCPU, colaIO);  //Falta ver donde se almacenan las variables auxiliares de los resultados, si en el evento o el proceso
-                    if (eventoFuturo != null)
+                    Evento proximoEvento = eventos[0];
+                    eventos.RemoveAt(0);
+                    tiempo = proximoEvento.tiempoOcurrencia;
+                    List<Evento> eventosFuturos = proximoEvento.ejecutar(colaCPU, colaIO, tiempo);  //Falta ver donde se almacenan las variables auxiliares de los resultados, si en el evento o el proceso
+                    foreach (Evento ev in eventosFuturos)
                     {
-                        eventos.Add(eventoFuturo);
+                        eventos.Add(ev);
                     }
                 }
             }

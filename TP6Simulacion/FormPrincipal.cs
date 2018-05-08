@@ -24,7 +24,7 @@ namespace TP6Simulacion
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            FormSimulacion simulacion = new FormSimulacion(Convert.ToInt64(numNucleos.Value));
+            FormSimulacion simulacion = new FormSimulacion(Convert.ToInt32(numNucleos.Value));
             simulacion.Show();
         }
     }

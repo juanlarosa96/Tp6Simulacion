@@ -22,7 +22,7 @@ namespace TP6Simulacion
             InitializeComponent();
         }
 
-        public FormSimulacion(Int64 cantidadNucleos)
+        public FormSimulacion(Int32 cantidadNucleos)
         {
             InitializeComponent();
             this.cantidadNucleos = cantidadNucleos;
@@ -33,7 +33,11 @@ namespace TP6Simulacion
         private void FormSimulacion_Load(object sender, EventArgs e)
         {
             List<Evento> lista = new List<Evento>();
-          
+            this.simulacion.iniciarSimulacion();
+
         }
+
+
+
     }
 }

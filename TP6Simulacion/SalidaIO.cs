@@ -9,17 +9,43 @@ namespace TP6Simulacion
     public class SalidaIO : Evento, IComparable
     {
         public Int32 tiempoOcurrencia { get; set; }
+
+        public SalidaIO()
+        {
+
+        }
+
+        public SalidaIO(Int32 tiempoOcurrencia)
+        {
+            this.tiempoOcurrencia = tiempoOcurrencia;
+        }
+
         public int CompareTo(object obj)
         {
             Evento evento = obj as Evento;
             return tiempoOcurrencia - evento.tiempoOcurrencia;
         }
 
-        public Evento ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO)
+        public List<Evento> ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO, Int32 tiempo)
         {
-            throw new NotImplementedException();
+            Proceso p;
+            List<Evento> eventosFuturos = new List<Evento>();
+            p = colaIO.Dequeue();
+            colasCPU.Enqueue(p);
+
+            if (colaIO.Count != 0)
+            {
+                eventosFuturos.Add(new SalidaIO(colaIO.ElementAt(0).generarRafagaIO() + tiempo));
+            }
+            if (colasCPU.Count <= Resultados.nucleos)
+            {
+                eventosFuturos.Add(new SalidaCPU(colasCPU.Count, tiempo + p.generarRafagaCPU()));
+            }
+
+            return eventosFuturos;
+
         }
 
-        
+
     }
 }

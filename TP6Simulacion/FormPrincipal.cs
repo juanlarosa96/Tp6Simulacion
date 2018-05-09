@@ -42,8 +42,7 @@ namespace TP6Simulacion
 
             
             lblTiempoOciosoPorcentaje.Text =  Math.Round(Resultados.calcularPorcentajeTiempoOcioso(), 2).ToString() + "%";
-
-            lblProcesos.Text = Resultados.cantidadProcesosTotales.ToString();
+            
             lblTiempo.Text = Resultados.tiempoFinal.ToString() + " Ns";
 
             simulacion.clear();

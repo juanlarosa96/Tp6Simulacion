@@ -36,8 +36,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTiempo = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblProcesos = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -150,28 +148,10 @@
             this.lblTiempo.TabIndex = 7;
             this.lblTiempo.Text = "0 Ns";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(391, 39);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(251, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Procesos en el sistema al tiempo de finalizar";
-            // 
-            // lblProcesos
-            // 
-            this.lblProcesos.AutoSize = true;
-            this.lblProcesos.Location = new System.Drawing.Point(391, 69);
-            this.lblProcesos.Name = "lblProcesos";
-            this.lblProcesos.Size = new System.Drawing.Size(14, 15);
-            this.lblProcesos.TabIndex = 9;
-            this.lblProcesos.Text = "0";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 137);
+            this.label5.Location = new System.Drawing.Point(381, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(225, 15);
             this.label5.TabIndex = 10;
@@ -180,7 +160,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 226);
+            this.label6.Location = new System.Drawing.Point(381, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(244, 15);
             this.label6.TabIndex = 11;
@@ -189,7 +169,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(391, 137);
+            this.label7.Location = new System.Drawing.Point(26, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(248, 15);
             this.label7.TabIndex = 12;
@@ -198,7 +178,7 @@
             // lblTiempoOciosoPromedio
             // 
             this.lblTiempoOciosoPromedio.AutoSize = true;
-            this.lblTiempoOciosoPromedio.Location = new System.Drawing.Point(26, 170);
+            this.lblTiempoOciosoPromedio.Location = new System.Drawing.Point(381, 69);
             this.lblTiempoOciosoPromedio.Name = "lblTiempoOciosoPromedio";
             this.lblTiempoOciosoPromedio.Size = new System.Drawing.Size(31, 15);
             this.lblTiempoOciosoPromedio.TabIndex = 13;
@@ -207,7 +187,7 @@
             // lblTiempoOciosoPorcentaje
             // 
             this.lblTiempoOciosoPorcentaje.AutoSize = true;
-            this.lblTiempoOciosoPorcentaje.Location = new System.Drawing.Point(26, 256);
+            this.lblTiempoOciosoPorcentaje.Location = new System.Drawing.Point(381, 148);
             this.lblTiempoOciosoPorcentaje.Name = "lblTiempoOciosoPorcentaje";
             this.lblTiempoOciosoPorcentaje.Size = new System.Drawing.Size(26, 15);
             this.lblTiempoOciosoPorcentaje.TabIndex = 14;
@@ -216,7 +196,7 @@
             // lblTiempoEsperaPromedio
             // 
             this.lblTiempoEsperaPromedio.AutoSize = true;
-            this.lblTiempoEsperaPromedio.Location = new System.Drawing.Point(391, 170);
+            this.lblTiempoEsperaPromedio.Location = new System.Drawing.Point(26, 148);
             this.lblTiempoEsperaPromedio.Name = "lblTiempoEsperaPromedio";
             this.lblTiempoEsperaPromedio.Size = new System.Drawing.Size(31, 15);
             this.lblTiempoEsperaPromedio.TabIndex = 15;
@@ -230,13 +210,11 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.lblTiempoOciosoPromedio);
             this.groupBox2.Controls.Add(this.lblTiempo);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.lblProcesos);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Location = new System.Drawing.Point(14, 182);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(707, 310);
+            this.groupBox2.Size = new System.Drawing.Size(707, 205);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -245,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 542);
+            this.ClientSize = new System.Drawing.Size(775, 413);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,8 +250,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTiempo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblProcesos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

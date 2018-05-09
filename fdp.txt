@@ -1,0 +1,6 @@
+% Salidas 0.05
+p CPU 0.09656
+p IO 0.00499
+p Llegadas 0.00309
+
+p: parametro para fdp geometrica

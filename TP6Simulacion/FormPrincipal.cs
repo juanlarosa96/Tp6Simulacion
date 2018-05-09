@@ -12,20 +12,41 @@ namespace TP6Simulacion
 {
     public partial class FormPrincipal : Form
     {
+        Simulacion simulacion;
         public FormPrincipal()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            simulacion = new Simulacion(new Random());
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
-        {
-            FormSimulacion simulacion = new FormSimulacion(Convert.ToInt32(numNucleos.Value));
-            simulacion.Show();
+        {            
+            
+            Resultados.inicializar(Convert.ToInt32(numNucleos.Value));
+
+            simulacion.cantidadFinalProcesos = Convert.ToInt32(numProcesos.Value);
+            simulacion.cantidadNucleos = Convert.ToInt32(numNucleos.Value);
+
+            this.simulacion.iniciarSimulacion();
+
+
+            lblTiempoEsperaPromedio.Text = Resultados.calcularTiempoPromedioEspera().ToString() + " Ns";
+
+            
+            lblTiempoOciosoPromedio.Text = Resultados.calcularTiempoOciosoPromedio().ToString() + " Ns";
+
+            
+            lblTiempoOciosoPorcentaje.Text =  Math.Round(Resultados.calcularPorcentajeTiempoOcioso(), 2).ToString() + "%";
+
+            lblProcesos.Text = Resultados.cantidadProcesosTotales.ToString();
+            lblTiempo.Text = Resultados.tiempoFinal.ToString() + " Ns";
+
+            simulacion.clear();
         }
     }
 }

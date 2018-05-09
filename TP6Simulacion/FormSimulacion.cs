@@ -13,7 +13,8 @@ namespace TP6Simulacion
     public partial class FormSimulacion : Form
     {
 
-        Int64 cantidadNucleos;
+        Int32 cantidadNucleos;
+        Int32 cantidadProcesos;
         Simulacion simulacion;
         private decimal p;
 
@@ -22,11 +23,14 @@ namespace TP6Simulacion
             InitializeComponent();
         }
 
-        public FormSimulacion(Int32 cantidadNucleos)
+        public FormSimulacion(Int32 cantidadNucleos, Int32 cantidadProcesos)
         {
             InitializeComponent();
+            Resultados.inicializar(cantidadNucleos);
             this.cantidadNucleos = cantidadNucleos;
-            this.simulacion = new Simulacion(new Random(), cantidadNucleos);
+            this.cantidadProcesos = cantidadProcesos;
+            this.simulacion = new Simulacion(new Random(), cantidadNucleos, cantidadProcesos);
+
         }
 
 
@@ -34,6 +38,13 @@ namespace TP6Simulacion
         {
             List<Evento> lista = new List<Evento>();
             this.simulacion.iniciarSimulacion();
+            Double a = Resultados.calcularTiempoPromedioEspera();
+            numTiempoEsperaPromedio.Value = Convert.ToDecimal(Resultados.calcularTiempoPromedioEspera());
+            numTiempoOciosoPromedio.Value = Convert.ToDecimal(Resultados.calcularTiempoOciosoPromedio());
+            numPorcentajeTiempoOcioso.Value = Convert.ToDecimal(Resultados.calcularPorcentajeTiempoOcioso());
+            txtCantidadProcesosTotales.Text = Resultados.cantidadProcesosTotales.ToString();
+            txtTiempo.Text = Resultados.tiempoFinal.ToString();
+            simulacion.clear();
 
         }
 

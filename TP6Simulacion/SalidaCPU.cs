@@ -8,33 +8,50 @@ namespace TP6Simulacion
 {
     public class SalidaCPU : Evento, IComparable
     {
-        
-        
-        public Int32 tiempoOcurrencia {get; set;}
-        public Int32 i { get; set; }
 
-        public SalidaCPU(Int32 i, Int32 t)
-        {            
-            this.i = i;
+
+        public Int32 tiempoOcurrencia { get; set; }
+
+
+        public SalidaCPU(Int32 t)
+        {
             this.tiempoOcurrencia = t;
         }
 
         public List<Evento> ejecutar(Queue<Proceso> colasCPU, Queue<Proceso> colaIO, Int32 tiempo)
         {
             List<Evento> eventosFuturos = new List<Evento>();
-            Proceso p = colasCPU.Dequeue();
-            if (!p.decidirSiFinaliza()) {
+            Proceso p = colasCPU.Dequeue();            
+            if (!p.decidirSiFinaliza())
+            {
                 colaIO.Enqueue(p);
-                if (colaIO.Count == 1) {
+                if (colaIO.Count == 1)
+                {
                     SalidaIO salidaIO = new SalidaIO();
                     salidaIO.tiempoOcurrencia = tiempo + p.generarRafagaIO();
                     eventosFuturos.Add(salidaIO);
                 }
+
             }
+            else
+            {
+                Resultados.cantidadProcesosFinalizados++;
+                Resultados.tiemposEspera += p.esperaTotal;
+            }
+
+            
 
             if (colasCPU.Count >= Resultados.nucleos)
             {
-                eventosFuturos.Add(new SalidaCPU(colasCPU.Count, tiempo + p.generarRafagaCPU()));
+                Resultados.finesEsperas += tiempo;
+                colasCPU.ElementAt(0).finEspera(tiempo);
+                eventosFuturos.Add(new SalidaCPU(tiempo + p.generarRafagaCPU()));
+
+            }
+            else
+            {
+                //Resultados.iniciosTiempoOcioso += tiempo;
+                Resultados.tiempoOciosoTotal -= tiempo;
             }
 
             return eventosFuturos;

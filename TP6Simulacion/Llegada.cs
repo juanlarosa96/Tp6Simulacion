@@ -37,9 +37,16 @@ namespace TP6Simulacion
             eventosFuturos.Add(new Llegada(tiempo + generarTiempoProximaLlegada(), new Random()));
             if (colaCPU.Count <= Resultados.nucleos)
             {
-                eventosFuturos.Add(new SalidaCPU(colaCPU.Count, tiempo + p.generarRafagaCPU()));
+                eventosFuturos.Add(new SalidaCPU(tiempo + p.generarRafagaCPU()));
+                //Resultados.finesTiempoOcioso += tiempo;
+                Resultados.tiempoOciosoTotal += tiempo;
             }
-
+            else
+            {
+                Resultados.iniciosEsperas += tiempo;
+                p.iniciarEspera(tiempo);
+            }
+            Resultados.cantidadProcesosTotales++;
             return eventosFuturos;
         }
 

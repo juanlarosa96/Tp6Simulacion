@@ -11,6 +11,8 @@ namespace TP6Simulacion
         Double pCPU = 0.09656;
         Double pIO = 0.00499;
         Random r;
+        Int32 inicioEspera;
+        public Int32 esperaTotal { get; set; }
         public Proceso(Random r)
         {
             this.r = r;
@@ -69,9 +71,19 @@ namespace TP6Simulacion
             return Convert.ToInt32(x);
         }
 
-        public Boolean decidirSiFinaliza() {
+        public Boolean decidirSiFinaliza()
+        {
 
-            return r.Next(10000) < 6;
+            return r.Next(100) < 5;
+        }
+
+        public void iniciarEspera(Int32 tiempo)
+        {
+            inicioEspera = tiempo;
+        }
+        public void finEspera(Int32 tiempo)
+        {
+            esperaTotal += (tiempo - inicioEspera);
         }
 
     }

@@ -10,7 +10,6 @@ namespace TP6Simulacion
     {
         Random r;
         private Random random;
-        private Int32 cantidadNucleos;
         private Queue<Proceso> colaCPU;
         private Queue<Proceso> colaIO;
         private List<Evento> eventos;
@@ -20,15 +19,30 @@ namespace TP6Simulacion
         private Int32 sumatoriasInicioTiempoOciosoCPU;
         private Int32 sumatoriasFinTiempoOciosoCPU;
         private Int32 finesRafagaTotales;
-
         public Int32 cantidadFinalProcesos { get; set; }
+        public Int32 cantidadNucleos { get; set; }
         public Int32 tiempo { get; set; }
+
         public Simulacion(Random r)
         {
             this.r = r;
+            this.tiempo = 0;
+            this.procesosFinalizados = 0;
+            this.sumatoriasFinEsperaProceso = 0;
+            this.sumatoriasFinTiempoOciosoCPU = 0;
+            this.sumatoriasInicioEsperaProceso = 0;
+            this.sumatoriasInicioTiempoOciosoCPU = 0;
+            finesRafagaTotales = 0;
+            this.cantidadNucleos = cantidadNucleos;
+            Resultados.nucleos = cantidadNucleos;
+
+            colaCPU = new Queue<Proceso>();
+            colaIO = new Queue<Proceso>();
+            eventos = new List<Evento>();
+
         }
 
-        public Simulacion(Random random, Int32 cantidadNucleos)
+        public Simulacion(Random random, Int32 cantidadNucleos, Int32 cantidadProcesos)
         {
             this.random = random;
             this.tiempo = 0;
@@ -37,8 +51,10 @@ namespace TP6Simulacion
             this.sumatoriasFinTiempoOciosoCPU = 0;
             this.sumatoriasInicioEsperaProceso = 0;
             this.sumatoriasInicioTiempoOciosoCPU = 0;
+            this.cantidadFinalProcesos = cantidadProcesos;
             finesRafagaTotales = 0;
-            cantidadFinalProcesos = 10;
+
+            cantidadFinalProcesos = cantidadProcesos;
             this.cantidadNucleos = cantidadNucleos;
 
             Resultados.nucleos = cantidadNucleos;
@@ -49,9 +65,9 @@ namespace TP6Simulacion
         }
 
         public void iniciarSimulacion()
-        {            
+        {
 
-            while (procesosFinalizados < cantidadFinalProcesos)
+            while (Resultados.cantidadProcesosFinalizados < cantidadFinalProcesos)
             {
                 if (eventos.Count == 0)
                 {
@@ -72,7 +88,32 @@ namespace TP6Simulacion
                     }
                 }
             }
+            Resultados.cantidadProcesosEnCola = colaCPU.Count;
+            Resultados.tiempoFinal = tiempo;
+            if (colaCPU.Count < cantidadNucleos)
+            {
+                //Resultados.finesTiempoOcioso += (tiempo * (cantidadNucleos - colaCPU.Count));
+                Resultados.tiempoOciosoTotal += (tiempo * (cantidadNucleos - colaCPU.Count));
+            }
+            Resultados.finesEsperas += (tiempo * (colaCPU.Count - cantidadNucleos));
+
         }
+
+        public void clear()
+        {
+            colaCPU.Clear();
+            colaIO.Clear();
+            eventos.Clear();
+
+            this.tiempo = 0;
+            this.procesosFinalizados = 0;
+            this.sumatoriasFinEsperaProceso = 0;
+            this.sumatoriasFinTiempoOciosoCPU = 0;
+            this.sumatoriasInicioEsperaProceso = 0;
+            this.sumatoriasInicioTiempoOciosoCPU = 0;
+
+        }
+
 
 
     }

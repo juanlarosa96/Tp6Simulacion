@@ -39,7 +39,14 @@ namespace TP6Simulacion
             }
             if (colasCPU.Count <= Resultados.nucleos)
             {
-                eventosFuturos.Add(new SalidaCPU(colasCPU.Count, tiempo + p.generarRafagaCPU()));
+                eventosFuturos.Add(new SalidaCPU(tiempo + p.generarRafagaCPU()));
+                //Resultados.finesTiempoOcioso += tiempo;
+                Resultados.tiempoOciosoTotal += tiempo;
+            }
+            else
+            {
+                Resultados.iniciosEsperas += tiempo;
+                p.iniciarEspera(tiempo);
             }
 
             return eventosFuturos;

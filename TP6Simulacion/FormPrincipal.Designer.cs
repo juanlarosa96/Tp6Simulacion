@@ -105,7 +105,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Cantidad de nucleos:";
+            this.label1.Text = "Cantidad de núcleos:";
             // 
             // label2
             // 
@@ -137,7 +137,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 15);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Unidades de tiempo de finalizacion";
+            this.label3.Text = "Unidades de tiempo de finalización";
             // 
             // lblTiempo
             // 
@@ -155,7 +155,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(225, 15);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Tiempo ocioso promedio de los nucleos";
+            this.label5.Text = "Tiempo ocioso promedio de los núcleos";
             // 
             // label6
             // 
@@ -164,7 +164,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(244, 15);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Porcentaje de tiempo ocioso de los nucleos";
+            this.label6.Text = "Porcentaje de tiempo ocioso de los núcleos";
             // 
             // label7
             // 
